@@ -1,20 +1,21 @@
 package com.bridgelabz.fileio;
 
 public class EmployeeData {
+    int id;
     String name;
-    int id, salary;
+    double salary;
 
-    public EmployeeData(String name, int id, int salary) {
-        this.name = name;
+    public EmployeeData(int id,String name, double salary) {
         this.id = id;
+        this.name = name;
         this.salary = salary;
     }
-    
+
     @Override
     public String toString() {
         return "EmployeeData{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", salary=" + salary +
                 '}';
     }
