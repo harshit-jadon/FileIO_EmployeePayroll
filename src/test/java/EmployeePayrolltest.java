@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
+import static com.bridgelabz.fileio.EmployeePayroll.IOService.FILE_IO;
+
 public class EmployeePayrolltest {
     @Test
     public void givenEmployess_WhenWrittenToFileShouldMatchEmployeeEntries() {
@@ -13,7 +15,8 @@ public class EmployeePayrolltest {
                 new EmployeeData(3,"Noida",3000),
         };
         EmployeePayroll employeePayroll = new EmployeePayroll(Arrays.asList(arrayOfEmps));
-        employeePayroll.writeEmployeeData(EmployeePayroll.IOService.FILE_IO);
+        employeePayroll.writeEmployeeData(FILE_IO);
+        employeePayroll.printData(FILE_IO);
 
     }
 }

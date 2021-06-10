@@ -20,12 +20,17 @@ public class EmployeePayroll {
         double salary = consoleInputReader.nextInt();
         employeeData.add(new EmployeeData(id, name, salary));
     }
-public void writeEmployeeData(IOService ioService) {
+    public void writeEmployeeData(IOService ioService) {
     if (ioService.equals(IOService.CONSOLE_IO))
         System.out.println(employeeData);
     else if (ioService.equals(IOService.FILE_IO))
         new EmployeePayrollFilesIOService().writeData(employeeData);
-}
+    }
+    public void printData(IOService ioService) {
+        if(ioService.equals(IOService.FILE_IO))
+            new EmployeePayrollFilesIOService().printData();
+    }
+
 
 
     public static void main(String[] args) {
