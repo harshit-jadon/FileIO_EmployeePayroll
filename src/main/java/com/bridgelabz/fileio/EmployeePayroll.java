@@ -30,8 +30,11 @@ public class EmployeePayroll {
         if(ioService.equals(IOService.FILE_IO))
             new EmployeePayrollFilesIOService().printData();
     }
-
-
+    public long countEntries(IOService ioService) {
+        if (ioService.equals(IOService.FILE_IO))
+            return new EmployeePayrollFilesIOService().countEntries();
+        return 0;
+    }
 
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Payroll");
