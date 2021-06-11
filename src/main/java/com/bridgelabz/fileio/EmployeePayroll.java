@@ -35,6 +35,12 @@ public class EmployeePayroll {
             return new EmployeePayrollFilesIOService().countEntries();
         return 0;
     }
+    public List<String> readEmployee(IOService ioService) {
+        if(ioService.equals(IOService.FILE_IO))
+            return new EmployeePayrollFilesIOService().readFileInList();
+        return null;
+    }
+
 
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Payroll");

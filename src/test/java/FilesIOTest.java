@@ -24,15 +24,14 @@ public class FilesIOTest {
         if(Files.exists(playPath)) FileUtils.deleteFiles(playPath.toFile());
         Assert.assertTrue(Files.notExists(playPath));
     }
-
-    @Test
+    @Test    //create new DIRECTORY
     public void givenPath_WhenCreateNewDirectory_ShouldReturnTrue() throws IOException {
         Path playPath = Paths.get(HOME + PLAY_WITH_NIO);
         Files.createDirectory(playPath);
         Assert.assertTrue(Files.exists(playPath));
     }
 
-    @Test
+    @Test    //CREATE NEW FILES
     public void givenPath_WhenCreateNewFile_ShouldReturnTrue() {
         Path playPath = Paths.get(HOME + PLAY_WITH_NIO);
         IntStream.range(1,10).forEach(counter ->{
@@ -45,8 +44,7 @@ public class FilesIOTest {
             }
         });
     }
-
-    @Test
+    @Test      //LIST FILES WITH EXTENSION
     public void givenPath_WhenListFilesWithExtension_ShouldReturnTrue() throws IOException {
         Path playPath = Paths.get(HOME + PLAY_WITH_NIO);
         Files.list(playPath).filter(Files::isRegularFile).forEach(System.out::println);

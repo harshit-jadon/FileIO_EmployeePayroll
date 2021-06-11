@@ -2,8 +2,10 @@ package com.bridgelabz.fileio;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.List;
 
 public class EmployeePayrollFilesIOService {
@@ -15,12 +17,8 @@ public class EmployeePayrollFilesIOService {
             buffer.append(empDataString);
         });
 
-        try {
-            Files.write(Paths.get(PAYROLL_FILE_NAME), buffer.toString().getBytes());
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        try { Files.write(Paths.get(PAYROLL_FILE_NAME), buffer.toString().getBytes()); }
+        catch (IOException e) { e.printStackTrace(); }
     }
     public void printData() {
         try { Files.lines((new File(PAYROLL_FILE_NAME).toPath())).forEach(System.out :: println); }
@@ -30,5 +28,15 @@ public class EmployeePayrollFilesIOService {
         long entries = 0;
         try { entries = Files.lines(new File(PAYROLL_FILE_NAME).toPath()).count(); } catch (IOException e) { e.printStackTrace(); }
         return entries;
+    }
+    public List<String> readFileInList() {
+        List<String> lines = Collections.emptyList();
+        try {
+            lines =
+                    Files.readAllLines(Paths.get(PAYROLL_FILE_NAME), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return lines;
     }
 }
